@@ -5,11 +5,12 @@ In this study we have proposed two architectures **SwinWSR** and **SwinSTASR**.
 Also we introduced a **transform attention block** in SwinSTASR.
 
 ## SwinWSR
-<img src="assetes/SwinWSR-model.png" alt= "SwinWSR Model" display='inline-block' width=35%>
-
+<div>
+    <img src="./assets/SwinWSR-model.png" alt= "SwinWSR Model" display='inline-block' width=35%>
+</div>
 
 ## SwinSTASR
-<img src="assetes/SwinSTASR-model.png" alt= "SwinSTASR Model" display='inline-block' width=35%>
+<img src="./assets/SwinSTASR-model.png" alt= "SwinSTASR Model" display='inline-block' width=35%>
 
 
 # Results
