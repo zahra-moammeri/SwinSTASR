@@ -53,5 +53,18 @@ Also we introduced a **transform attention block** in SwinSTASR.
 
 ## Compare models
 <div style="display:flex; justify-content:center;">
-    <img src="./assets/Swinfir-stasr-swb-compares.png" alt= "Compare Models" width=70%>
+    <img src="./assets/Swinfir-stasr-swb-compares.png" alt= "Compare Models" width=90%>
 </div>
+
+<hr/>
+
+<div style="display:flex; justify-content:center;">
+    <img src="./assets/Urban_img033_compares.png" alt= "Compare Models" width=90%>
+</div>
+
+<hr/>
+
+<div style="display:flex; justify-content:center;">
+    <img src="./assets/Urban_img062_compares.png" alt= "Compare Models" width=90%>
+</div>
+
