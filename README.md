@@ -5,13 +5,13 @@ In this study we have proposed two architectures **SwinWSR** and **SwinSTASR**.
 Also we introduced a **transform attention block** in SwinSTASR.
 
 ## SwinWSR
-<div style="text-align:center;">
-    <img src="./assets/SwinWSR-model.png" alt= "SwinWSR Model" display='inline-block' width=70%>
+<div style="display:flex; justify-content:center;">
+    <img src="./assets/SwinWSR-model.png" alt= "SwinWSR Model" width=70%>
 </div>
 
 ## SwinSTASR
-<div style="text-align:center;">
-    <img src="./assets/SwinSTASR-model.png" alt= "SwinSTASR Model" display='inline-block' width=70%>
+<div style="display:flex; justify-content:center;">
+    <img src="./assets/SwinSTASR-model.png" alt= "SwinSTASR Model" width=70%>
 </div>
 
 # Results
@@ -51,3 +51,7 @@ Also we introduced a **transform attention block** in SwinSTASR.
 |  SwinWSR  | $${\color{blue}0.0514}$$ | $${\color{blue}0.0833}$$ | $${\color{red}0.1169}$$ | $${\color{red}0.0314}$$ | $${\color{blue}0.0217}$$ |
 | SwinSTASR | $${\color{red}0.0513}$$ | $${\color{red}0.0830}$$ | $${\color{blue}0.1178}$$ | $${\color{blue}0.0319}$$ | $${\color{red}0.0216}$$ |
 
+## Compare models
+<div style="display:flex; justify-content:center;">
+    <img src="./assets/Swinfir-stasr-swb-compares.png" alt= "Compare Models" width=70%>
+</div>
