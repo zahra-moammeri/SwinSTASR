@@ -55,8 +55,7 @@ Also we introduced a **transform attention block** in SwinSTASR.
 <hr/>
 
 <!-- LPIPS -->
-* SwinSTASR results at x4. The best results are in $${\color{red}red}$$ and the second bests are in $${\color{blue}blue}$$.
-
+* SwinSTASR results at x4.
 |   Metric  |  Set5    |   Set14   |   BSD100  |   Urban100    |   Manga109    |
 |  :----:   |  :----:  |   :----:  |   :----:  |    :----:     |    :----:     |
 |  PSNR     | 32.8065  | 29.0439   |  27.8641  |    27.3730    |   31.9224     |
