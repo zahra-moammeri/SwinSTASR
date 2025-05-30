@@ -51,7 +51,19 @@ Also we introduced a **transform attention block** in SwinSTASR.
 |  SwinWSR  | $${\color{blue}0.0514}$$ | $${\color{blue}0.0833}$$ | $${\color{red}0.1169}$$ | $${\color{red}0.0314}$$ | $${\color{blue}0.0217}$$ |
 | SwinSTASR | $${\color{red}0.0513}$$ | $${\color{red}0.0830}$$ | $${\color{blue}0.1178}$$ | $${\color{blue}0.0319}$$ | $${\color{red}0.0216}$$ |
 
-## Compare models
+
+<hr/>
+
+<!-- LPIPS -->
+* SwinSTASR results at x4. The best results are in $${\color{red}red}$$ and the second bests are in $${\color{blue}blue}$$.
+
+|   Metric  |  Set5    |   Set14   |   BSD100  |   Urban100    |   Manga109    |
+|  :----:   |  :----:  |   :----:  |   :----:  |    :----:     |    :----:     |
+|  PSNR     | 32.8065  | 29.0439   |  27.8641  |    27.3730    |   31.9224     |
+|  SSIM     | 0.9023   | 0.7928    |  0.7471   |     0.8226    |    0.9245     |
+|  LPIPS    |   0.1707 |   0.2711  |   0.3289  |    0.1832     |    0.1018     |
+
+## Compare models at x2
 <div style="display:flex; justify-content:center;">
     <img src="./assets/Swinfir-stasr-swb-compares.png" alt= "Compare Models" width=90%>
 </div>
