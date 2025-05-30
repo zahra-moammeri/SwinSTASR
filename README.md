@@ -5,15 +5,15 @@ In this study we have proposed two architectures **SwinWSR** and **SwinSTASR**.
 Also we introduced a **transform attention block** in SwinSTASR.
 
 ## SwinWSR
-![SwinWSR Model](assetes/SwinWSR-model.png)
+<img src="assetes/SwinWSR-model.png" alt= "SwinWSR Model" display='inline-block' width=35%>
 
 
 ## SwinSTASR
-![SwinSTASR Model](assetes/SwinSTASR-model.png)
+<img src="assetes/SwinSTASR-model.png" alt= "SwinSTASR Model" display='inline-block' width=35%>
 
 
 # Results
-* PSNR results at x2. The best results are in $${\color{red}red}$$ and the second bests are in $${\color{blue}blue}$$
+* PSNR results at x2. The best results are in $${\color{red}red}$$ and the second bests are in $${\color{blue}blue}$$.
 
 |   model   |  Set5    |   Set14   |   BSD100  |   Urban100    |   Manga109    |
 |  :----:   |  :----:  |   :----:  |   :----:  |    :----:     |    :----:     |
