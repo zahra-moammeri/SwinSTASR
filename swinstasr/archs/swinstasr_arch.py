@@ -7,8 +7,9 @@ from basicsr.archs.arch_util import to_2tuple, trunc_normal_
 from swinstasr.archs.swinstasr_utils import WindowAttention, DropPath, Mlp
 from swinstasr.archs.swinstasr_utils import PatchEmbed, PatchUnEmbed, Upsample
 from swinstasr.archs.swinstasr_utils import window_partition, window_reverse
-from swinstasr.archs.swb_stab_transforms import SFB, SWB, STAB
-from swinstasr.archs.transforms import TransAttention
+from swinstasr.archs.swb_stb_transforms import SFB, SWB, STB
+from swinstasr.archs.stab import STAB
+from swinstasr.archs.swab import SWAB
 
 
 class SwinTransformerBlock(nn.Module):
@@ -268,7 +269,7 @@ class RSTB(nn.Module):
                  use_checkpoint=False,
                  img_size=224,
                  patch_size=4,
-                 resi_connection='STASR'):
+                 resi_connection='SWB'):
         super(RSTB, self).__init__()
 
         self.dim = dim
@@ -296,10 +297,12 @@ class RSTB(nn.Module):
             self.after_body = SFB(dim)
         elif resi_connection == "SWB":
             self.after_body = SWB(dim)
-        elif resi_connection =="STASR":
+        elif resi_connection =="STB":
+            self.after_body = STB(dim)
+        elif resi_connection == "SWAB":
+            self.after_body = SWAB(dim)
+        elif resi_connection == "STAB":
             self.after_body = STAB(dim)
-        elif resi_connection == "TrasformAttn":
-            self.after_body = TransAttention(dim)
         elif resi_connection =="identity":
             self.after_body = nn.Identity()
 
@@ -363,7 +366,7 @@ class SwinSTASR(nn.Module):
                  upscale=2,
                  img_range=1.,
                  upsampler='pixelshuffle',
-                 resi_connection='STASR',
+                 resi_connection='SWB',
                  **kwargs):
         super(SwinSTASR, self).__init__()
         num_in_ch = in_chans
@@ -443,18 +446,22 @@ class SwinSTASR(nn.Module):
 
         # build the last conv layer in deep feature extraction
         # self.conv_after_body = nn.Conv2d(embed_dim, embed_dim, 3, 1, 1)
+
         if resi_connection == "1conv":
             self.after_body = nn.Conv2d(embed_dim, embed_dim, 3, 1, 1)
         elif resi_connection == "SFB":
             self.after_body = SFB(embed_dim)
         elif resi_connection == "SWB":
             self.after_body = SWB(embed_dim)
-        elif resi_connection =="STASR":
+        elif resi_connection =="STB":
+            self.after_body = STB(embed_dim)
+        elif resi_connection == "SWAB":
+            self.after_body = SWAB(embed_dim)
+        elif resi_connection == "STAB":
             self.after_body = STAB(embed_dim)
-        elif resi_connection == "TrasformAttn":
-            self.after_body = TransAttention(embed_dim)
         elif resi_connection =="identity":
             self.after_body = nn.Identity()
+
         # ------------------------- 3, high quality image reconstruction ------------------------- #
         if self.upsampler == 'pixelshuffle':
             # for classical SR

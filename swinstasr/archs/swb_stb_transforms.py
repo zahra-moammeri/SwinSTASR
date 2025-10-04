@@ -1,3 +1,5 @@
+## SWB & STB
+
 import torch
 import torch.nn as nn
 import pytorch_wavelets as pw
@@ -211,9 +213,9 @@ class TransformAttention(nn.Module):
         return self.channel_attn(last_conv)
 
 
-class STAB(nn.Module):
+class STB(nn.Module):
     def __init__(self, embed_dim):
-        super(STAB , self).__init__()
+        super(STB , self).__init__()
 
         self.trans_attn = TransformAttention(embed_dim)   # [4, 180, 60, 60]
         self.resblock = ResBlock(embed_dim)  # [4, 180, 60, 60]

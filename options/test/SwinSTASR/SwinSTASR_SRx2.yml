@@ -16,32 +16,32 @@ datasets:
   # test_2:  # the 2nd test dataset
   #   name: Set14
   #   type: PairedImageDataset
-  #   dataroot_gt: ./datasets/Set14/GTmod2
-  #   dataroot_lq: ./datasets/Set14/LRbicx2
+  #   dataroot_gt: ./datasets/Set14/HR
+  #   dataroot_lq: ./datasets/Set14/LR_bicubic/X2
   #   io_backend:
   #     type: disk
 
   # test_3:
   #   name: Urban100
   #   type: PairedImageDataset
-  #   dataroot_gt: ./datasets/urban100/GTmod2
-  #   dataroot_lq: ./datasets/urban100/LRbicx2
+  #   dataroot_gt: ./datasets/Urban100/HR
+  #   dataroot_lq: ./datasets/Urban100/LR_bicubic/X2
   #   io_backend:
   #     type: disk
 
   # test_4:
-  #    name: BSDS100
+  #    name: BSD100
   #    type: PairedImageDataset
-  #    dataroot_gt: ./datasets/BSDS100/GTmod2
-  #    dataroot_lq: ./datasets/BSDS100/LRbicx2
+  #    dataroot_gt: ./datasets/BSD100/HR
+  #    dataroot_lq: ./datasets/BSD100/LR_bicubic/X2
   #    io_backend:
   #      type: disk
 
   # test_5:
   #     name: Manga109
   #     type: PairedImageDataset
-  #     dataroot_gt: ./datasets/manga109/GTmod2
-  #     dataroot_lq: ./datasets/manga109/LRbicx2
+  #     dataroot_gt: ./datasets/Manga109/HR
+  #     dataroot_lq: ./datasets/Manga109/LR_bicubic/X2
   #     io_backend:
   #       type: disk
 
@@ -58,12 +58,12 @@ network_g:
   num_heads: [6, 6, 6, 6, 6, 6]
   mlp_ratio: 2
   upsampler: 'pixelshuffle'
-  resi_connection: 'STASR'
+  resi_connection: 'TrasformAttn'
 
 
 # path
 path:
-  pretrain_network_g: ./experiments/pretrained_models/net_g_latest.pth
+  pretrain_network_g: ./experiments/pretrained_models/SwinSWASR/net_g_latest.pth
   strict_load_g: true
   param_key_g: 'params_ema'
 

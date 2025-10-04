@@ -6,18 +6,19 @@ import numpy as np
 import os
 import torch
 from torch.nn import functional as F
-from swinstasr.archs.swinstasr_arch import swinSTASR
+from swinstasr.archs.swinstasr_arch import SwinSTASR
+import time
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='datasets/Set5/LRbicx4', help='input test image folder')
-    parser.add_argument('--output', type=str, default='results/swinSTASR/Set5', help='output folder')
-    parser.add_argument('--task', type=str, default='swinSTASR', help='swinSTASR')
+    parser.add_argument('--input', type=str, default='datasets/Set14/LR_bicubic/X2', help='input test image folder')
+    parser.add_argument('--output', type=str, default='results/SwinSWASR/Set14', help='output folder')
+    parser.add_argument('--task', type=str, default='SwinSTASR', help='SwinSTASR')
     # TODO: it now only supports sr, need to adapt to dn and jpeg_car
     parser.add_argument('--training_patch_size', type=int, default=60, help='training patch size')
-    parser.add_argument('--scale', type=int, default=4, help='scale factor: 2')
-    parser.add_argument('--model_path', type=str, default='experiments/pretrained_models/net_g_latest.pth')
+    parser.add_argument('--scale', type=int, default=2, help='scale factor: 2')
+    parser.add_argument('--model_path', type=str, default='experiments/pretrained_models/SwinSWASR/net_g_latest.pth')
     args = parser.parse_args()
 
     os.makedirs(args.output, exist_ok=True)
@@ -39,7 +40,7 @@ def main():
         # inference
         with torch.no_grad():
             # pad input image to be a multiple of window_size
-            if 'swinSTASR' in args.task:
+            if 'SwinSTASR' in args.task:
                 window_size = 12
                 _, _, h, w = img.size()
                 mod_pad_h = (h // window_size + 1) * window_size - h
@@ -58,8 +59,8 @@ def main():
 
 
 def define_model(args):
-    if args.task == 'swinSTASR':
-        model = swinSTASR(
+    if args.task == 'SwinSTASR':
+        model = SwinSTASR(
             upscale=args.scale,
             in_chans=3,
             img_size=args.training_patch_size,
@@ -70,8 +71,9 @@ def define_model(args):
             num_heads=[6, 6, 6, 6, 6, 6],
             mlp_ratio=2,
             upsampler='pixelshuffle',
-            resi_connection='STASR')
+            resi_connection='SWAB')
 
+    start_time = time.time()
     
     loadnet = torch.load(args.model_path)
     if 'params_ema' in loadnet:
@@ -79,7 +81,8 @@ def define_model(args):
     else:
         keyname = 'params'
     model.load_state_dict(loadnet[keyname], strict=True)
-
+    end_time = time.time()
+    print(end_time - start_time)
     return model
 
 

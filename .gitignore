@@ -6,3 +6,11 @@ requirements.txt
 swinstasr/data/meta_info/meta_info_DIV2K800sub_GT.txt
 options/test/.DS_Store
 scripts/extract_subimages_not_thread.py
+datasets/
+experiments/
+results/
+.eggs
+tb_logger/
+*.cfg
+swinstasr.egg-info
+*.egg-info

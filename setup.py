@@ -95,7 +95,7 @@ if __name__ == '__main__':
         long_description=readme(),
         long_description_content_type='text/markdown',
         author='Zahra Moammeri',
-        author_email='zahramoammeri1@gmain.com',
+        author_email='zahramoammeri1@gmail.com',
         keywords='computer vision, restoration, super resolution',
         url='https://github.com/zahra-moammeri/SwinSTASR',
         include_package_data=True,

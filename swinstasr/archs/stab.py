@@ -1,5 +1,5 @@
 
-'''Transform attention
+'''SwinSTASR: Transform attention
 including an avg pooling and a conv1 multiplied by the transform layers of 
 wavelet and fourier 
 
@@ -116,7 +116,7 @@ class WaveTransform(nn.Module):
     def __init__(self, embed_dim, wave = 'db4', mode = 'symmetric', *args, **kwars):
         super(WaveTransform, self).__init__()
 
-        self.J = 1
+        self.J = 4
         self.wave = wave
         self.mode = mode
         
@@ -223,9 +223,9 @@ class TransformAttention(nn.Module):
         return self.channel_attn(last_conv)
 
 
-class TransAttention(nn.Module):
+class STAB(nn.Module):
     def __init__(self, embed_dim):
-        super(TransAttention , self).__init__()
+        super(STAB , self).__init__()
 
         self.trans_attn = TransformAttention(embed_dim)   # [4, 180, 60, 60]
         self.resblock = ResBlock(embed_dim)  # [4, 180, 60, 60]

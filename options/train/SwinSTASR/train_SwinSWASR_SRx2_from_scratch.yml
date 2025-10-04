@@ -1,6 +1,6 @@
 # general settings
-name: train_SwinSTASR_SRx2_from_scratch
-model_type: SwinSTASRModel
+name: train_SwinSWASR_SRx2_from_scratch
+model_type: SwinSWASRModel
 scale: 2
 num_gpu: auto
 manual_seed: 0
@@ -81,7 +81,7 @@ train:
     milestones: [250000, 400000, 450000, 475000]
     gamma: 0.5
 
-  total_iter: 50 #500000
+  total_iter: 500000
   warmup_iter: -1  # no warm up
 
   # losses
@@ -93,7 +93,7 @@ train:
 
 # validation settings
 val:
-  val_freq: !!float 1e2 #!!float 5e3 
+  val_freq: !!float 5e3 
   save_img: False
   pbar: False
 
@@ -119,7 +119,7 @@ val:
 
 # logging settings
 logger:
-  print_freq: 10 #200
+  print_freq: 200
   save_checkpoint_freq: !!float 5e3
   use_tb_logger: true
   wandb:
